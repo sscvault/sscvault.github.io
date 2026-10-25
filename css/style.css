@@ -22,6 +22,7 @@ html {
 }
 
 body {
+  overflow-x: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI",
     Roboto, Helvetica, Arial, sans-serif;
   font-weight: 400;
