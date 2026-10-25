@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact & FAQ · Boomeriyah L&F</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Boomeriyah <span>L&amp;F</span></a>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="report-lost.html" class="nav-link">Report Lost</a>
+        <a href="report-found.html" class="nav-link">Report Found</a>
+        <a href="browse.html" class="nav-link">Browse</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h1 class="section-title">Contact &amp; FAQ</h1>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">How do I report a lost item?</div>
+          <div class="faq-a">Go to the “Report Lost” page, fill in the details (title, category, location, date and your contact), and optionally add a photo. Submit the form. Your report will appear on the Browse page immediately.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How do I report a found item?</div>
+          <div class="faq-a">Same process as lost items — use the “Report Found” page instead. Be as specific as possible so the owner can recognise their belonging.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is my contact information public?</div>
+          <div class="faq-a">Yes. The email or phone number you enter is shown on the item card so the other person can reach you. Use a college email or a number you are comfortable sharing.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can I edit or delete a report?</div>
+          <div class="faq-a">Currently there is no public edit/delete. Contact the project team (details below) if you need a report removed or corrected.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What should I do after matching with someone?</div>
+          <div class="faq-a">Meet in a safe public place on campus (library entrance, canteen, etc.). Verify ownership before handing over the item. Once returned, you can ask the team to mark the report as resolved.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Who built this?</div>
+          <div class="faq-a">This is a college project for Shri Shivaji College of Arts, Commerce and Science — “Boomeriyah Lost &amp; Found”.</div>
+        </div>
+      </div>
+
+      <div class="contact-box">
+        <h3>Need Help?</h3>
+        <p>Reach the project team:</p>
+        <a class="contact-email" href="mailto:boomeriyah.lf@example.com">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+          boomeriyah.lf@example.com
+        </a>
+        <p style="margin-top:14px;font-size:12px;color:var(--text-muted)">
+          (Replace this email with your real contact before submitting the project)
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Boomeriyah Lost &amp; Found · Shri Shivaji College of Arts, Commerce and Science</p>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        q.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
