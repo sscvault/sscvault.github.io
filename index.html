@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SSC Lost & Found</title>
+  <title>SSC Vault</title>
   <link rel="stylesheet" href="css/style.css" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
@@ -25,7 +25,7 @@
     <section class="hero">
       <div class="container">
         <div class="hero-college">Shri Shivaji College of Arts, Commerce and Science</div>
-        <h1 class="hero-title">SSC<br><span> Vault</span></h1>
+        <h1 class="hero-title">SSC<br><span>Vault</span></h1>
         <p class="hero-sub">
           Lost your ID card? Found someone’s earbuds?
           Report it here and help a fellow student.
@@ -92,6 +92,21 @@
         </div>
       </div>
     </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="newsletter">
+          <h2>Get notified</h2>
+          <p>Subscribe to receive an email when a new lost or found item is posted.</p>
+          <form id="subscribe-form" class="newsletter-form">
+            <input type="email" name="email" id="subscribe-email" required placeholder="your@email.com" />
+            <button type="submit" class="btn btn-secondary">Subscribe</button>
+          </form>
+          <div id="subscribe-msg" class="newsletter-msg"></div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer">
