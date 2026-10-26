@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unsubscribe · SSC Vault</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">SSC <span>Vault</span></a>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="report-lost.html" class="nav-link">Report Lost</a>
+        <a href="report-found.html" class="nav-link">Report Found</a>
+        <a href="browse.html" class="nav-link">Browse</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="newsletter" style="margin-top:40px">
+        <h2>Unsubscribe</h2>
+        <p id="unsub-status">Processing…</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>SSC Vault · Shri Shivaji College of Arts, Commerce and Science</p>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const status = document.getElementById('unsub-status');
+      const params = new URLSearchParams(window.location.search);
+      const token = params.get('token');
+      if (!token) {
+        status.textContent = 'Invalid unsubscribe link.';
+        status.className = 'newsletter-msg err';
+        return;
+      }
+      try {
+        const { data, error } = await sb
+          .from('subscribers')
+          .update({ active: false })
+          .eq('token', token)
+          .select();
+        if (error) throw error;
+        if (!data || data.length === 0) {
+          status.textContent = 'This link is invalid or already used.';
+          status.className = 'newsletter-msg err';
+        } else {
+          status.textContent = 'You have been unsubscribed. You will no longer receive notifications.';
+          status.className = 'newsletter-msg ok';
+        }
+      } catch (e) {
+        console.error(e);
+        status.textContent = 'Something went wrong. Please try again later.';
+        status.className = 'newsletter-msg err';
+      }
+    });
+  </script>
+</body>
+</html>
