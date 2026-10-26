@@ -298,4 +298,46 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial load
     loadItems();
   }
+
+  // Subscribe form
+  const subForm = document.getElementById('subscribe-form');
+  if (subForm) {
+    subForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const msg = document.getElementById('subscribe-msg');
+      const email = document.getElementById('subscribe-email').value.trim().toLowerCase();
+      const btn = subForm.querySelector('button[type="submit"]');
+      if (!email) return;
+      btn.disabled = true;
+      msg.textContent = '';
+      msg.className = 'newsletter-msg';
+      try {
+        const token = crypto.randomUUID();
+        const { error } = await sb.from('subscribers').insert({
+          email,
+          token,
+          active: true
+        });
+        if (error) {
+          if (error.code === '23505' || (error.message || '').includes('duplicate')) {
+            msg.textContent = 'You are already subscribed.';
+            msg.className = 'newsletter-msg ok';
+          } else {
+            throw error;
+          }
+        } else {
+          msg.textContent = 'Subscribed! You will get an email when new items are posted.';
+          msg.className = 'newsletter-msg ok';
+          subForm.reset();
+        }
+      } catch (err) {
+        console.error(err);
+        msg.textContent = err.message || 'Could not subscribe. Try again.';
+        msg.className = 'newsletter-msg err';
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  }
+
 });
